@@ -1,12 +1,12 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import { useState, useEffect } from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import 'react-native-url-polyfill/auto';
 import { TouchableOpacity, Text } from 'react-native';
-import {supabase} from './src/supabase';
+import { supabase } from './src/supabase';
 //Import Screens
 import SignupScreen from './src/SignupScreen';
 import SigninScreen from './src/SigninScreen';
@@ -58,7 +58,7 @@ function MainTabs({ navigation }) {
             margin: 3,
             borderRadius: 8,
           }}>
-          <Text style={{color: 'white'}}>My Profile</Text>
+          <Text style={{ color: 'white' }}>My Profile</Text>
         </TouchableOpacity>
       ),
     });
@@ -85,7 +85,7 @@ export default function App() {
   useEffect(() => {
     supabase.auth
       .getSession()
-      .then(({data: {session}}) => {
+      .then(({ data: { session } }) => {
         setSession(session);
       })
       .catch(err => {
@@ -97,55 +97,44 @@ export default function App() {
     });
   }, []);
 
-  if (session && session.user) {
-    return (
-      <SafeAreaProvider>
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen name="Splash" component={Splash} options={{ headerShown: false }} />
-            <Stack.Screen
-              name="Switzerland Gulf"
-              component={MainTabs}
-              options={{ headerShown: true, headerBackVisible: false }}
-            />
-            <Stack.Screen name="My Profile" component={MyProfile} initialParams={{ user_id: (session && session.user) ? session.user:null }} />
-            <Stack.Screen name="Chatbot" component={Chatbot} initialParams={{ user_id: (session && session.user) ? session.user:null }} />
-            <Stack.Screen name="About" component={AboutScreen} />
-            <Stack.Screen name="My Reservations" component={MyReservations} initialParams={{ user_id: (session && session.user) ? session.user:null }} />
-            <Stack.Screen name="Feedback" component={Feedback} initialParams={{ user_id: (session && session.user) ? session.user:null }} />
-            <Stack.Screen name="Book" options={{ title: 'Booking Details' }} component={BookScreen} initialParams={{ user_id: (session && session.user) ? session.user:null }} />
-            <Stack.Screen name="Place Details" component={PlaceDetails} initialParams={ {place: null, user_id: (session && session.user) ? session.user:null } } options={{ title: '' }} />
-            <Stack.Screen name="Video Details" component={VideoDetails} initialParams={{ video: null }} />
-            <Stack.Screen name="Event Details" component={EventDetails} initialParams={{ event: null }} />
-            <Stack.Screen name="Booking Place" component={BookingPlace} />
-            <Stack.Screen name="Admin Access" component={AdminScreen} />
-            <Stack.Screen name="Videos Managemnet" component={VideosManagment} />
-            <Stack.Screen name="New Video" component={NewVideo} />
-            <Stack.Screen name="Events Management" component={EventManagement} />
-            <Stack.Screen name="New Event" component={NewEvent} />
-            <Stack.Screen name="Places Managemnet" component={PlacesManagement} />
-            <Stack.Screen name="New Place" component={NewPlace} />
-            <Stack.Screen name="Reviews Managemnet" component={ReviewsMangemet} />
-            <Stack.Screen name="Booking Places Management" component={BookingPlacesManagement} />
-            <Stack.Screen name="New Booking Place" component={NewBookingPlace} />
-            <Stack.Screen name="Manage Reservations" component={ManageReservations} />
-            <Stack.Screen name="Manage Users" component={ManageUsers} />
-            <Stack.Screen name="Manage Feedback" component={ManageFeedback} />
-            <Stack.Screen name="New Chatbot" component={NewChatbot} />
-            <Stack.Screen name="Manage Chatbot" component={ManageChatbot} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </SafeAreaProvider>
-    );
-  } else {
-    return (
+  return (
+    <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Splash" component={Splash} options={{ headerShown: false }} initialParams={{ signin: true }} />
+          <Stack.Screen name="Splash" component={Splash} options={{ headerShown: false }} initialParams={{ session: session }} />
+          <Stack.Screen
+            name="Switzerland Gulf"
+            component={MainTabs}
+            options={{ headerShown: true, headerBackVisible: false }}
+          />
+          <Stack.Screen name="My Profile" component={MyProfile} initialParams={{ user_id: (session && session.user) ? session.user : null }} />
+          <Stack.Screen name="Chatbot" component={Chatbot} initialParams={{ user_id: (session && session.user) ? session.user : null }} />
+          <Stack.Screen name="About" component={AboutScreen} />
+          <Stack.Screen name="My Reservations" component={MyReservations} initialParams={{ user_id: (session && session.user) ? session.user : null }} />
+          <Stack.Screen name="Feedback" component={Feedback} initialParams={{ user_id: (session && session.user) ? session.user : null }} />
+          <Stack.Screen name="Book" options={{ title: 'Booking Details' }} component={BookScreen} initialParams={{ user_id: (session && session.user) ? session.user : null }} />
+          <Stack.Screen name="Place Details" component={PlaceDetails} initialParams={{ place: null, user_id: (session && session.user) ? session.user : null }} options={{ title: '' }} />
+          <Stack.Screen name="Video Details" component={VideoDetails} initialParams={{ video: null }} />
+          <Stack.Screen name="Event Details" component={EventDetails} initialParams={{ event: null }} />
+          <Stack.Screen name="Booking Place" component={BookingPlace} />
+          <Stack.Screen name="Admin Access" component={AdminScreen} />
+          <Stack.Screen name="Videos Managemnet" component={VideosManagment} />
+          <Stack.Screen name="New Video" component={NewVideo} />
+          <Stack.Screen name="Events Management" component={EventManagement} />
+          <Stack.Screen name="New Event" component={NewEvent} />
+          <Stack.Screen name="Places Managemnet" component={PlacesManagement} />
+          <Stack.Screen name="New Place" component={NewPlace} />
+          <Stack.Screen name="Reviews Managemnet" component={ReviewsMangemet} />
+          <Stack.Screen name="Booking Places Management" component={BookingPlacesManagement} />
+          <Stack.Screen name="New Booking Place" component={NewBookingPlace} />
+          <Stack.Screen name="Manage Reservations" component={ManageReservations} />
+          <Stack.Screen name="Manage Users" component={ManageUsers} />
+          <Stack.Screen name="Manage Feedback" component={ManageFeedback} />
+          <Stack.Screen name="New Chatbot" component={NewChatbot} />
+          <Stack.Screen name="Manage Chatbot" component={ManageChatbot} />
           <Stack.Screen name="Sign in" component={SigninScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Sign up" component={SignupScreen} />
         </Stack.Navigator>
       </NavigationContainer>
-    );
-  }
+    </SafeAreaProvider>);
 }

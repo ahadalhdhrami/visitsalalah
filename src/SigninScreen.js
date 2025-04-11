@@ -35,6 +35,8 @@ export default function SigninScreen({navigation}) {
               .auth
               .signOut()
               navigation.navigate("Sign in")
+            } else {
+              navigation.navigate("Splash")
             }
           }
 

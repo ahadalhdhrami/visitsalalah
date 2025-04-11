@@ -113,7 +113,7 @@ export default function MyProfile({route, navigation}) {
       .auth
       .signOut()
       .then(res => {
-        //navigation.navigate('Sign in');
+        navigation.navigate('Sign in');
       })
       .catch(err => {
         console.log(err);

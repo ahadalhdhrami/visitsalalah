@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Image, ImageBackground, Text, TouchableOpacity, View} from 'react-native';
 import {supabase} from './supabase';
 
-export default function Splash({navigation}) {
+export default function Splash({navigation, route}) {
   const [session, setSession] = useState(false);
   const [userType, setUserType] = useState(false);
 
