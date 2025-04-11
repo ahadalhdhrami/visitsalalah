@@ -88,6 +88,7 @@ export default function MyProfile({route, navigation}) {
                   password: password
                 })
                 .then(() => {
+                  //Alert.alert('Updated Successfully.');
                   signOut();
                 })
                 .catch((err) => {

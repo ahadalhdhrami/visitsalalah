@@ -39,7 +39,7 @@ export default function Splash({navigation}) {
   function goToScreen(name) {
     if (name == 'Home') {
       if (session) {
-        navigation.navigate('Visit Salalah');
+        navigation.navigate('Switzerland Gulf');
       } else {
         navigation.navigate('Sign in');
       }
@@ -64,7 +64,7 @@ export default function Splash({navigation}) {
 
   return (
     <ImageBackground
-        source={require("./images/splashbg.jpg")}
+        source={require("./images/splashbg.jpeg")}
         style={{
             flex: 1,
             justifyContent: 'center',
@@ -77,7 +77,7 @@ export default function Splash({navigation}) {
         <View style={{ borderRadius: 15, padding: 15, backgroundColor: '#ffffff9c', alignItems: 'center',}}>
       <Image
         source={require('./images/vslogo.png')}
-        style={{width: 150, height: 150, resizeMode: 'contain', backgroundColor: '#fff', borderRadius: 50, padding: 15 }}
+        style={{width: 130, height: 130, resizeMode: 'contain', backgroundColor: '#fff', borderRadius: 50, padding: 15 }}
       />
       <Text
         style={{

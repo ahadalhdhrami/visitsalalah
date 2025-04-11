@@ -104,7 +104,7 @@ export default function App() {
           <Stack.Navigator>
             <Stack.Screen name="Splash" component={Splash} options={{ headerShown: false }} />
             <Stack.Screen
-              name="Visit Salalah"
+              name="Switzerland Gulf"
               component={MainTabs}
               options={{ headerShown: true, headerBackVisible: false }}
             />

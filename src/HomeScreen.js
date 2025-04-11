@@ -41,6 +41,7 @@ export default function HomeScreen({ navigation }) {
       <Text style={{ padding: 5, color: 'black' }}>{item.description}</Text>
     </TouchableOpacity>}
       keyExtractor={(item) => item.id}
+      removeClippedSubviews={false}
     />
     
   </View>)

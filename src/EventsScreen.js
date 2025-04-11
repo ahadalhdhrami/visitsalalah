@@ -44,6 +44,7 @@ export default function EventsScreen({navigation}) {
           </TouchableOpacity>
         )}
         keyExtractor={item => item.id}
+        removeClippedSubviews={false}
       />
     </View>
   );

@@ -293,6 +293,7 @@ export default function DiscoverScreen({navigation}) {
         )}
         keyExtractor={item => item.id}
         style={{marginBottom: 75}}
+        removeClippedSubviews={false}
       />
     </View>
   );
